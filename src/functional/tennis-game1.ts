@@ -64,9 +64,3 @@ class TennisGameF1 {
     return score;
   }
 }
-
-if (typeof window === "undefined") {
-  module.exports = TennisGame1;
-} else {
-  window.TennisGame1 = TennisGame1;
-}
