@@ -1,24 +1,12 @@
-class TennisGameF1 {
-  m_score1 = 0;
-  m_score2 = 0;
-  player1Name: string;
-  player2Name: string;
+import { TennisGameBase } from "./tennis-game.class";
 
-  constructor(player1Name: string, player2Name: string) {
-    this.player1Name = player1Name;
-    this.player2Name = player2Name;
-  }
-
-  wonPoint(playerName: string) {
-    if (playerName === "player1") this.m_score1 += 1;
-    else this.m_score2 += 1;
-  }
+export class TennisGame1 extends TennisGameBase {
 
   getScore() {
     var score = "";
     var tempScore = 0;
-    if (this.m_score1 === this.m_score2) {
-      switch (this.m_score1) {
+    if (this.pointsP1 === this.pointsP2) {
+      switch (this.pointsP1) {
         case 0:
           score = "Love-All";
           break;
@@ -32,18 +20,18 @@ class TennisGameF1 {
           score = "Deuce";
           break;
       }
-    } else if (this.m_score1 >= 4 || this.m_score2 >= 4) {
-      var minusResult = this.m_score1 - this.m_score2;
+    } else if (this.pointsP1 >= 4 || this.pointsP2 >= 4) {
+      var minusResult = this.pointsP1 - this.pointsP2;
       if (minusResult === 1) score = "Advantage player1";
       else if (minusResult === -1) score = "Advantage player2";
       else if (minusResult >= 2) score = "Win for player1";
       else score = "Win for player2";
     } else {
       for (var i = 1; i < 3; i++) {
-        if (i === 1) tempScore = this.m_score1;
+        if (i === 1) tempScore = this.pointsP1;
         else {
           score += "-";
-          tempScore = this.m_score2;
+          tempScore = this.pointsP2;
         }
         switch (tempScore) {
           case 0:
